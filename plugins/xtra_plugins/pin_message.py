@@ -12,7 +12,7 @@ COMMAND_HAND_LER = "/"
 
 @Client.on_message(
     filters.command(["pin"], COMMAND_HAND_LER) &
-    admin_fliter
+    admin_fliter & filters.group
 )
 async def pin(_, message: Message):
     if not message.reply_to_message:
@@ -22,7 +22,7 @@ async def pin(_, message: Message):
 
 @Client.on_message(
     filters.command(["unpin"], COMMAND_HAND_LER) &
-    admin_fliter
+    admin_fliter & filters.group
 )
 async def unpin(_, message: Message):
     if not message.reply_to_message:
