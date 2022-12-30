@@ -16,9 +16,11 @@ COMMAND_HAND_LER = "/"
 )
 async def pin(_, message: Message):
     if not message.reply_to_message:
-        return
-    await message.reply_to_message.pin()
-
+        try:
+          await message.reply_to_message.pin()
+    except:
+        pass
+    return True, "Succes"
 
 @Client.on_message(
     filters.command(["unpin"], COMMAND_HAND_LER) &
@@ -26,5 +28,8 @@ async def pin(_, message: Message):
 )
 async def unpin(_, message: Message):
     if not message.reply_to_message:
-        return
-    await message.reply_to_message.unpin()
+        try:
+          await message.reply_to_message.unpin()
+    except:
+        pass
+    return True, "Succes"
